@@ -4,18 +4,27 @@
     <table>
         <tr>
             <td>Name</td>
-            <td><asp:TextBox ID="name" runat="server"></asp:TextBox>
+            <td><asp:TextBox ID="name" runat="server"></asp:TextBox></td>
+        </tr>
+        <tr> 
+            <td> &nbsp</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><asp:TextBox ID="email" runat="server"></asp:TextBox>
+            <td><asp:TextBox ID="email" runat="server"></asp:TextBox></td>
+        </tr>
+        <tr> 
+            <td> &nbsp</td>
         </tr>
         <tr>
-            <td>Company</td>
+            <td>Company&nbsp</td>
             <td><asp:TextBox ID="client" runat="server"></asp:TextBox></td>
         </tr>
     </table>
 
     <br />
     <asp:Button ID="registerBtn" runat="server" Text="Finish Registering" OnClick="registerBtn_click"/>
+    <br />
+    <br />
+    <asp:Label ID="successLabel" runat="server" Text="" />
 </asp:Content>

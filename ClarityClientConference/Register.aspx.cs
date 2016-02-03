@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 using ClarityClientConference.Models;
 
 namespace ClarityClientConference
@@ -15,7 +16,7 @@ namespace ClarityClientConference
 
         }
 
-        private void InsertAttendee(string name, string email, string client)
+        private void InsertAttendee(string name, string email, int client)
         {
             AttendeeManager aMgr = new AttendeeManager();
             aMgr.Add(name, email, client);
@@ -24,7 +25,23 @@ namespace ClarityClientConference
         protected void registerBtn_click(object sender, EventArgs e)
         {
             // validate data first
-            InsertAttendee(name.Text, email.Text, client.Text);
+            String attendeeName = name.Text;
+            String attendeeEmail = email.Text;
+            String attendeeCompany = client.Text;
+
+            // Get clientID from textbox (error if not found)
+            var _db = new ClarityClientConference.Models.ClarityContext();
+            var cid = _db.Database.SqlQuery<int>("SELECT DISTINCT ClientID FROM Clients WHERE Name = @attendeeCompany", new SqlParameter("attendeeCompany", attendeeCompany)).FirstOrDefault();
+            if (cid < 1)
+            {
+                // Client not found
+                successLabel.Text = "Company with id " + cid + " was not found in Clarity's client database.  Did you misspell something?";
+            }
+            else
+            {
+                InsertAttendee(attendeeName, attendeeEmail, cid);
+                successLabel.Text = "Registration successful!";
+            }      
         }
     }
 }

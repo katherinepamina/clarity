@@ -15,7 +15,7 @@ namespace ClarityClientConference.Models
         public int ClientID { get; set; }
 
         [Required, Display(Name = "Name")]
-        public string AttendeeName { get; set; }
+        public string Name { get; set; }
 
         [Required, Display(Name = "Email")]
         public string Email { get; set; }

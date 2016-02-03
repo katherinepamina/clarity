@@ -10,11 +10,12 @@ namespace ClarityClientConference.Models
     {
         private ClarityContext cc = new ClarityContext();
         
-        public void Add(string name, string email, string client)
+        public void Add(string name, string email, int client)
         {
             Attendee attendee = new Attendee();
             attendee.Name = name;
             attendee.Email = email;
+            attendee.ClientID = client;
             cc.Attendees.Add(attendee);
             cc.SaveChanges();
         }

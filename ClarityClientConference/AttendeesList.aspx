@@ -2,16 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Who's Attending?</h2>
     <div>
-        <asp:ListView ID="attendeesList"
-            ItemType="ClarityClientConference.Models.Attendee"
+        <asp:ListView ID="clientsList"
+            ItemType="ClarityClientConference.Models.Client"
             runat="server"
-            SelectMethod="GetAttendees">
+            SelectMethod="GetAttendingClients">
             <ItemTemplate>
-                <b style="font-size: large; font-style: normal">
-                    <%#:Item.Name  %>
-                </b>
+                <b style="font-size: large; font-style: normal"><%#:Item.Name  %>
+                </b<br /><br />
+                Phone: <%#:Item.PhoneNumber %> <br />
+                Email: <%#:Item.Email %> <br />
+                Address: <%#Item.Street %> , <%#:Item.City %> , <%#:Item.State %> <%#:Item.ZipCode %><br />
+
             </ItemTemplate>
             <ItemSeparatorTemplate> <br /> </ItemSeparatorTemplate>
         </asp:ListView>
+        
     </div>
 </asp:Content>

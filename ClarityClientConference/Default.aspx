@@ -10,22 +10,10 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Register</h2>
-            <p>
-                The Clarity Client Conference is being held to bring clients together to discuss how great it is working with Clarity Consulting.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
+            <a class="btn btn-default" href="/Register.aspx">Register &raquo;</a>
         </div>
         <div class="col-md-4">
-            <h2>See Who's Attending</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
+            <a class="btn btn-default" href="/AttendeesList.aspx">Who's Attending? &raquo;</a>
         </div>
     </div>
 
