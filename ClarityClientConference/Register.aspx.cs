@@ -35,7 +35,7 @@ namespace ClarityClientConference
             if (cid < 1)
             {
                 // Client not found
-                successLabel.Text = "Company with id " + cid + " was not found in Clarity's client database.  Did you misspell something?";
+                successLabel.Text = "Company was not found in Clarity's client database.  Is there a misspelling?";
             }
             else
             {

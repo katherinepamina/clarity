@@ -12,10 +12,21 @@
                 Phone: <%#:Item.PhoneNumber %> <br />
                 Email: <%#:Item.Email %> <br />
                 Address: <%#Item.Street %> , <%#:Item.City %> , <%#:Item.State %> <%#:Item.ZipCode %><br />
-
             </ItemTemplate>
             <ItemSeparatorTemplate> <br /> </ItemSeparatorTemplate>
         </asp:ListView>
-        
+        <br />
+        <br />
+        <b style="font-size: large; font-style: normal; text-decoration: underline">Attendees<br /></b>
+        <asp:ListView ID="attendeesList"
+            ItemType="ClarityClientConference.Models.Attendee"
+            runat="server"
+            SelectMethod="GetAttendeesByClient">
+            <ItemTemplate>
+                <b style="font-size: large; font-style: normal"><%#:Item.Name %></b>
+            </ItemTemplate>
+            <ItemSeparatorTemplate> <br /> </ItemSeparatorTemplate>
+        </asp:ListView>
+
     </div>
 </asp:Content>

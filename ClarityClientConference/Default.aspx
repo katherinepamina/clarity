@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <h1>Clarity Client Conference</h1>
         <p class="lead">The Clarity Client Conference is being held to bring clients together to discuss how great it is working with Clarity Consulting.</p>
-        <!--<p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
+        <p style="font-size: 1em">20 N Wacker Dr. Suite 1450<br /> Chicago, IL 60606</p>
     </div>
 
     <div class="row">

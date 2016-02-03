@@ -34,9 +34,9 @@ namespace ClarityClientConference
             return attendingClients.ToList<int>();
         }
 
-        public List<List<Attendee>> GetAttendeesByClient()
+        public List<Attendee> GetAttendeesByClient()
         {
-            var attendeeList = new List<List<Attendee>>();
+            var attendeeList = new List<Attendee>();
             var _db = new ClarityClientConference.Models.ClarityContext();
             var clientIdList = GetClientIds();
             foreach (var cid in clientIdList)
@@ -44,11 +44,43 @@ namespace ClarityClientConference
                 var attendees = _db.Database.SqlQuery<Attendee>("SELECT * FROM Attendees WHERE ClientID = @cid", new SqlParameter("cid", cid)).ToList<Attendee>();
                 if (attendees != null)
                 {
-                    attendeeList.Add(attendees);
+                    attendeeList.AddRange(attendees);
                 }
             }
 
             return attendeeList;
+        }
+
+        public List<String> GetClientsAndAttendees()
+        {
+            var returnString = new List<String>();
+            var clientList = GetAttendingClients();
+            foreach (var client in clientList)
+            {
+                returnString.Add(client.Name);                      // 0
+                returnString.Add(client.PhoneNumber);               // 1
+                returnString.Add(client.Email);                     // 2
+                returnString.Add(client.Street);                    // 3
+                returnString.Add(client.City);                      // 4
+                returnString.Add(client.State);                     // 5
+                returnString.Add(client.ZipCode.ToString());        // 6
+
+                var attendees = GetAttendeesForClient(client.ClientID);
+                string attendeeNames = "";
+                foreach (var a in attendees)
+                {
+                    attendeeNames = attendeeNames + " \n " + a.Name;
+                }
+                returnString.Add(attendeeNames);
+            }
+            return returnString;
+        }
+
+        public List<Attendee> GetAttendeesForClient(int cid)
+        {
+            var _db = new ClarityClientConference.Models.ClarityContext();
+            var attendees = _db.Database.SqlQuery<Attendee>("SELECT * FROM Attendees WHERE ClientID = @cid", new SqlParameter("cid", cid)).ToList<Attendee>();
+            return attendees.ToList();
         }
 
         public List<Client> GetAttendingClients()
